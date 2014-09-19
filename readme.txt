@@ -1,0 +1,1 @@
+These files are all solutions to lodash exercises.
