@@ -26,25 +26,15 @@ var comments = process.argv[2]
 
 var commentSort = function(comments) {
   
-  // do work; return stuff
-  /*var x= _.groupBy(comments, function (username) {
-  	return username
-  })*/
-
+  var result = [];
   var groupedComments = _.groupBy(comments, 'username')
   
-  return _.forEach(groupedComments, function(item) {   
-  	var commentCount = _.size(item)
-
-  	console.log(item)
-  	console.log(commentCount )
-
+  _.forEach(groupedComments, function(value, key) {   
+    result.push( { 'username': key, 'comment_count': _.size(value) }) 
   })
-
-  //})
-
-  //var result = { 'hot': hot, 'warm': warm } 
-  //return commentCount;
+  
+  result = _.sortBy(result, 'comment_count').reverse();
+  return result;
    
 };
 
@@ -56,7 +46,7 @@ module.exports = commentSort
 
 /* official solution:
 
-
+  the same
 */
 
 
